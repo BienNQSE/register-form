@@ -7,38 +7,38 @@ import RadioRHF from "../radio/RadioRHF";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
 
-// const schema = yup
-//   .object({
-//     username: yup.string().required("Please enter your username"),
-//     email: yup
-//       .string()
-//       .email("Please enter valid email address")
-//       .required("Please enter your email address"),
-//     password: yup
-//       .string()
-//       .min(8, "Your password must have at least 8 characters")
-//       .matches(
-//         /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/,
-//         {
-//           message:
-//             "Your password must have at least 8 characters, 1 uppercase, 1 lowercase, 1 special characters ",
-//         }
-//       )
+const schema = yup
+  .object({
+    username: yup.string().required("Please enter your username"),
+    email: yup
+      .string()
+      .email("Please enter valid email address")
+      .required("Please enter your email address"),
+    password: yup
+      .string()
+      .min(8, "Your password must have at least 8 characters")
+      .matches(
+        /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/,
+        {
+          message:
+            "Your password must have at least 8 characters, 1 uppercase, 1 lowercase, 1 special characters ",
+        }
+      )
 
-//       .required("Please enter your password"),
-//     gender: yup
-//       .string()
-//       .required("Please select your gender")
-//       .oneOf(["male", "female"], "You can only select male or female"),
-//     job: yup
-//       .string()
-//       .required("Please select your job")
-//       .oneOf(["teacher", "developer", "doctor", "freelancer"]),
-//     terms: yup
-//       .boolean()
-//       .required("Please check accept the terms and condition"),
-//   })
-//   .required();
+      .required("Please enter your password"),
+    gender: yup
+      .string()
+      .required("Please select your gender")
+      .oneOf(["male", "female"], "You can only select male or female"),
+    job: yup
+      .string()
+      .required("Please select your job")
+      .oneOf(["teacher", "developer", "doctor", "freelancer"]),
+    terms: yup
+      .boolean()
+      .required("Please check accept the terms and condition"),
+  })
+  .required();
 
 const dataDropdown = [
   {
@@ -71,7 +71,7 @@ const RegisterRHF = () => {
     reset,
     watch,
   } = useForm({
-    // resolver: yupResolver(schema),
+    resolver: yupResolver(schema),
     mode: "onChange",
     defaultValues: {
       gender: "male",
@@ -154,7 +154,7 @@ const RegisterRHF = () => {
             <RadioRHF
               control={control}
               name="gender"
-              value="male"
+              values="male"
               checked={watchGender === "male"}
             ></RadioRHF>
             <span>Male</span>
@@ -163,7 +163,7 @@ const RegisterRHF = () => {
             <RadioRHF
               control={control}
               name="gender"
-              value="female"
+              values="female"
               checked={watchGender === "female"}
             ></RadioRHF>
             <span>Female</span>
