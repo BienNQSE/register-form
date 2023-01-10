@@ -33,3 +33,34 @@
 .custom-checkbox input:checked + div .custom-checkbox-square {
   background-color: rgb(59 130 246 / var(--tw-bg-opacity));
 }
+
+.zoom-enter .content {
+  opacity: 0;
+  transform: scale(0.5);
+}
+.zoom-enter-active .content {
+  opacity: 1;
+  transform: scale(1);
+}
+.zoom-exit .content {
+  opacity: 1;
+  transform: scale(0.5);
+}
+.zoom-exit-active .content {
+  opacity: 0;
+  transform: scale(0.5);
+}
+
+//fade
+.fade-enter .tooltip {
+  opacity: 0;
+}
+.fade-enter-active .tooltip {
+  opacity: 1;
+}
+.fade-exit .tooltip {
+  opacity: 1;
+}
+.fade-exit-active .tooltip {
+  opacity: 0;
+}

@@ -41,27 +41,6 @@ const DropdownRHF = ({ control, setValue, name, data, labelDropdown }) => {
             {item.text}
           </div>
         ))}
-        {/* <div
-          className="p-5 cursor-pointer hover:bg-gray-100"
-          onClick={handleClickDropdownItem}
-          data-value="Teacher"
-        >
-          Teacher
-        </div>
-        <div
-          className="p-5 cursor-pointer hover:bg-gray-100"
-          onClick={handleClickDropdownItem}
-          data-value="Developer"
-        >
-          Developer
-        </div>
-        <div
-          className="p-5 cursor-pointer hover:bg-gray-100"
-          onClick={handleClickDropdownItem}
-          data-value="Doctor"
-        >
-          Doctor
-        </div> */}
       </div>
     </div>
   );
