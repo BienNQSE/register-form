@@ -1,13 +1,20 @@
-import React from "react";
+import React, { Fragment } from "react";
+import HeaderMain from "./components/header/HeaderMain";
+import { AuthProvider } from "./contexts/auth-context";
+import { CountProvider, useCount } from "./contexts/countContext";
+import { GalleryProvider } from "./contexts/gallery-context";
+import CardList from "./gallery/CardList";
+import PhotoList from "./gallery/PhotoList";
 import "./index.scss";
 
 function CountDisplay() {
-  const count = 0;
+  const [count] = useCount();
   return <div>The count is: {count}</div>;
 }
 
 function Counter() {
-  const setCount = () => {};
+  const [, setCount] = useCount();
+
   const increment = () => setCount((c) => c + 1);
   return (
     <button
@@ -21,10 +28,22 @@ function Counter() {
 
 const App = () => {
   return (
-    <div className="p-10 flex items-center justify-center gap-x-5">
-      <CountDisplay></CountDisplay>
-      <Counter></Counter>
-    </div>
+    <Fragment>
+      {/* <div className="p-10 flex items-center justify-center gap-x-5">
+      <CountProvider>
+        <CountDisplay></CountDisplay>
+        <Counter></Counter>
+      </CountProvider>
+    </div> */}
+
+      <AuthProvider>
+        <GalleryProvider>
+          <HeaderMain></HeaderMain>
+          <PhotoList></PhotoList>
+          <CardList></CardList>
+        </GalleryProvider>
+      </AuthProvider>
+    </Fragment>
   );
 };
 
