@@ -1,51 +1,59 @@
 import { createContext, useContext, useState } from "react";
+import useLocalStorage from "../hooks/useLocalStorage";
 
 const GalleryContext = createContext();
 
+const fakeData = [
+  {
+    id: 1,
+    url: "https://images.unsplash.com/photo-1546975490-a79abdd54533?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80",
+    isFavourite: false,
+  },
+  {
+    id: 2,
+    url: "https://images.unsplash.com/photo-1612940960267-4549a58fb257?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80",
+    isFavourite: false,
+  },
+  {
+    id: 3,
+    url: "https://images.unsplash.com/photo-1628148366072-3337dd316e17?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80",
+    isFavourite: false,
+  },
+  {
+    id: 4,
+    url: "https://images.unsplash.com/photo-1600615614799-2cd68cb75705?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80",
+    isFavourite: false,
+  },
+  {
+    id: 5,
+    url: "https://images.unsplash.com/photo-1628558917600-13c89decd56d?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=686&q=80",
+    isFavourite: false,
+  },
+  {
+    id: 6,
+    url: "https://images.unsplash.com/photo-1570566998157-0df9e6f8d5f1?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=735&q=80",
+    isFavourite: false,
+  },
+  {
+    id: 7,
+    url: "https://images.unsplash.com/photo-1549950844-e6a5d47f8324?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1471&q=80",
+    isFavourite: false,
+  },
+  {
+    id: 8,
+    url: "https://images.unsplash.com/photo-1594713110068-373988a737e2?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=688&q=80",
+    isFavourite: false,
+  },
+];
+
 function GalleryProvider(props) {
-  const [photos, setPhotos] = useState([
-    {
-      id: 1,
-      url: "https://images.unsplash.com/photo-1546975490-a79abdd54533?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80",
-      isFavourite: false,
-    },
-    {
-      id: 2,
-      url: "https://images.unsplash.com/photo-1612940960267-4549a58fb257?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80",
-      isFavourite: false,
-    },
-    {
-      id: 3,
-      url: "https://images.unsplash.com/photo-1628148366072-3337dd316e17?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80",
-      isFavourite: false,
-    },
-    {
-      id: 4,
-      url: "https://images.unsplash.com/photo-1600615614799-2cd68cb75705?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80",
-      isFavourite: false,
-    },
-    {
-      id: 5,
-      url: "https://images.unsplash.com/photo-1628558917600-13c89decd56d?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=686&q=80",
-      isFavourite: false,
-    },
-    {
-      id: 6,
-      url: "https://images.unsplash.com/photo-1570566998157-0df9e6f8d5f1?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=735&q=80",
-      isFavourite: false,
-    },
-    {
-      id: 7,
-      url: "https://images.unsplash.com/photo-1549950844-e6a5d47f8324?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1471&q=80",
-      isFavourite: false,
-    },
-    {
-      id: 8,
-      url: "https://images.unsplash.com/photo-1594713110068-373988a737e2?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=688&q=80",
-      isFavourite: false,
-    },
-  ]);
-  const [cartItems, setCartItems] = useState([]);
+  const { storedValue, setValue } = useLocalStorage("photos", fakeData);
+  const { storedValue: storedCart, setValue: setStoredCart } = useLocalStorage(
+    "cartItems",
+    []
+  );
+  const [photos, setPhotos] = useState(storedValue);
+  const [cartItems, setCartItems] = useState(storedCart);
   const [favouriteList, setFavouriteList] = useState([]);
 
   function toggleFavourite(photoId) {
@@ -55,6 +63,7 @@ function GalleryProvider(props) {
       }
       return photo;
     });
+    setValue(updateArray);
     setPhotos(updateArray);
   }
   // 1. Viết function addToCart
@@ -66,8 +75,12 @@ function GalleryProvider(props) {
       const isExisted = prevItems.some((item) => item.id === newItem.id);
       console.log("isExisted: ", isExisted);
       // 5. Nếu tồn tại thì trả về danh sách trước đó
-      if (isExisted) return [...prevItems];
+      if (isExisted) {
+        setStoredCart([...prevItems]);
+        return [...prevItems];
+      }
       // 6. Chưa tồn tại thì thêm vào giỏ hàng
+      setStoredCart([...prevItems, newItem]);
       return [...prevItems, newItem];
     });
   }
@@ -75,7 +88,9 @@ function GalleryProvider(props) {
   // remove item from cart
   function removeFromCart(id) {
     setCartItems((prevItems) => {
-      prevItems.filter((item) => item.id !== id);
+      const result = prevItems.filter((item) => item.id !== id);
+      setStoredCart(result);
+      return result;
     });
   }
 
